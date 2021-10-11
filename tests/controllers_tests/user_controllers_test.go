@@ -1,14 +1,9 @@
 package controllers_tests
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
-	"fmt"
 	"github.com/stretchr/testify/assert"
 	"log"
-	"net/http"
-	"net/http/httptest"
 	"testing"
 )
 
@@ -55,7 +50,7 @@ func TestSignIn(t *testing.T) {
 	}
 }
 
-func TestLogin(t *testing.T) {
+/*func TestLogin(t *testing.T) {
 	err := dropUsersTable()
 	if err != nil {
 		log.Fatal(err)
@@ -134,4 +129,4 @@ func TestLogin(t *testing.T) {
 			assert.Equal(t, responseMap["error"], value.errorMessage)
 		}
 	}
-}
+}*/

@@ -60,7 +60,10 @@ func dropUsersTable() error {
 }
 
 func seedOneUser() (models.User, error) {
-	dropUsersTable()
+	err:=dropUsersTable()
+	if err!=nil{
+		log.Fatal(err)
+	}
 
 	user := models.User{
 		ID:       1,
@@ -69,7 +72,7 @@ func seedOneUser() (models.User, error) {
 		Password: "test_password",
 	}
 
-	err := server.DB.Model(&models.User{}).Create(&user).Error
+	err = server.DB.Model(&models.User{}).Create(&user).Error
 	if err != nil {
 		log.Fatalf("Failed to seed one user: %v", err)
 	}
@@ -78,7 +81,10 @@ func seedOneUser() (models.User, error) {
 }
 
 func seedMultipleUsers() ([]models.User, error) {
-	dropUsersTable()
+	err:=dropUsersTable()
+	if err!=nil{
+		log.Fatal(err)
+	}
 
 	users := []models.User{
 		{ID: 1,

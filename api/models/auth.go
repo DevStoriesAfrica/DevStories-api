@@ -3,6 +3,7 @@ package models
 import (
 	"DevStories/api/tokens"
 	"github.com/jinzhu/gorm"
+	"golang.org/x/crypto/bcrypt"
 )
 
 type Auth struct {
@@ -10,16 +11,16 @@ type Auth struct {
 	Token string `json:"token"`
 }
 
-func (auth *Auth) SignInUser(db gorm.DB, email, password string) (*Auth, error) {
+func (auth *Auth) SignInUser(db *gorm.DB, email, password string) (*Auth, error) {
 	user := User{}
 
-	err := db.Debug().Model(&User{}).Where("email=?", email).Take(&user).Error
+	err := db.Debug().Model(User{}).Where("email = ?", email).Take(&user).Error
 	if err != nil {
 		return &Auth{}, err
 	}
 
 	err = VerifyHashedPassword(password, user.Password)
-	if err != nil {
+	if err != nil && err == bcrypt.ErrMismatchedHashAndPassword {
 		return &Auth{}, err
 	}
 

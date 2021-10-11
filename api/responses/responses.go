@@ -10,7 +10,7 @@ func SUCCESS(w http.ResponseWriter, statusCode int, data interface{}) {
 	w.WriteHeader(statusCode)
 	err := json.NewEncoder(w).Encode(data)
 	if err != nil {
-		fmt.Fprintf(w, "Error formatting response: %v", err)
+		_,err=fmt.Fprintf(w, "Error formatting response: %v", err)
 	}
 }
 

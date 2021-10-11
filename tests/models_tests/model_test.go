@@ -80,7 +80,7 @@ func seedOneUser() (models.User, error) {
 	return user, nil
 }
 
-func seedMultipleUsers() ([]models.User, error) {
+/*func seedMultipleUsers() ([]models.User, error) {
 	err:=dropUsersTable()
 	if err!=nil{
 		log.Fatal(err)
@@ -108,4 +108,4 @@ func seedMultipleUsers() ([]models.User, error) {
 	}
 
 	return users, nil
-}
+}*/

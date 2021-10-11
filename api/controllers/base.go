@@ -39,7 +39,7 @@ func (server *Server) InitializeServer() {
 
 	server.Router = mux.NewRouter()
 
-	//server.InitializeRoutes()
+	server.InitializeRoutes()
 }
 
 func (server *Server) Run(address string) {

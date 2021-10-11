@@ -34,7 +34,7 @@ func Database() {
 	dbPassword := os.Getenv("TEST_DB_PASSWORD")
 	dbName := os.Getenv("TEST_DB_NAME")
 
-	DBUrl := fmt.Sprintf("host=%s port=%s name=%s password=%s dbname=%s sslmode=disable", dbHost, dbPort, dbUser, dbPassword, dbName)
+	DBUrl := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", dbHost, dbPort, dbUser, dbPassword, dbName)
 
 	server.DB, err = gorm.Open(dbDriver, DBUrl)
 	if err != nil {

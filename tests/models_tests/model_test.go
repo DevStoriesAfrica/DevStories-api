@@ -13,6 +13,7 @@ import (
 
 var server = controllers.Server{}
 var userInstance = models.User{}
+var authInstance = models.Auth{}
 var err error
 
 func TestMain(m *testing.M) {
@@ -60,8 +61,8 @@ func dropUsersTable() error {
 }
 
 func seedOneUser() (models.User, error) {
-	err:=dropUsersTable()
-	if err!=nil{
+	err := dropUsersTable()
+	if err != nil {
 		log.Fatal(err)
 	}
 
